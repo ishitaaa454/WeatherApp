@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Sky-inspired light mode */
+    --background: 210 100% 97%;
+    --foreground: 215 25% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 20%;
+
+    --primary: 215 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 195 70% 88%;
+    --secondary-foreground: 215 25% 20%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 50%;
+
+    --accent: 190 85% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 88%;
+    --ring: 215 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Weather-specific tokens */
+    --gradient-sky: linear-gradient(to bottom, hsl(210 100% 92%), hsl(210 100% 97%));
+    --glass-bg: hsla(0, 0%, 100%, 0.7);
+    --glass-border: hsla(210, 50%, 80%, 0.3);
+    --shadow-soft: 0 4px 20px hsla(215, 30%, 30%, 0.08);
+    --shadow-glow: 0 8px 32px hsla(190, 85%, 50%, 0.2);
+  }
+
+  .dark {
+    /* Night sky dark mode */
+    --background: 230 35% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 230 25% 12%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 230 25% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 195 90% 55%;
+    --primary-foreground: 230 35% 8%;
+
+    --secondary: 230 20% 18%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 230 20% 16%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 265 75% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 20% 20%;
+    --input: 230 20% 20%;
+    --ring: 195 90% 55%;
+
+    /* Weather-specific dark tokens */
+    --gradient-sky: linear-gradient(to bottom, hsl(230 30% 12%), hsl(230 35% 8%));
+    --glass-bg: hsla(230, 25%, 15%, 0.6);
+    --glass-border: hsla(195, 70%, 50%, 0.2);
+    --shadow-soft: 0 4px 20px hsla(0, 0%, 0%, 0.3);
+    --shadow-glow: 0 8px 32px hsla(195, 90%, 55%, 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    background: var(--gradient-sky);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+}
